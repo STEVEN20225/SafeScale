@@ -1,6 +1,6 @@
 (function(){
             // Initializing with your public key
-            emailjs.init("n_qc-vIobMbE0UmGg");
+            emailjs.init("SDmBddR20TPgnL5E7");
         })();
 
         lucide.createIcons();
