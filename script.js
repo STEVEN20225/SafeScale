@@ -1,31 +1,41 @@
-emailjs.init({
-  publicKey: "n_qc-vIobMbE0UmGg",
-});
+(function(){
+            // Initializing with your public key
+            emailjs.init("n_qc-vIobMbE0UmGg");
+        })();
 
-lucide.createIcons();
+        lucide.createIcons();
 
-const form = document.getElementById("subscribe-form");
-const btn = document.getElementById("btn");
-const message = document.getElementById("message");
+        const form = document.getElementById("subscribe-form");
+        const btn = document.getElementById("btn");
+        const message = document.getElementById("message");
 
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
 
-  btn.innerText = "Sending...";
-  btn.disabled = true;
-  message.innerText = "";
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+            message.innerText = "";
 
-  try {
-    await emailjs.sendForm("service_p3rb2d1", "template_co3g57b", form);
-    message.className = "mt-4 text-sm font-medium text-brand-green";
-    message.innerText = "Check your email!";
-    form.reset();
-  } catch (error) {
-    console.error("EmailJS Error:", error);
-    message.className = "mt-4 text-sm font-medium text-brand-red";
-    message.innerText = "Something went wrong.";
-  } finally {
-    btn.innerText = "Subscribe";
-    btn.disabled = false;
-  }
-});
+            // Using your Service ID and Template ID
+            emailjs.sendForm(
+                "service_p3rb2d1",
+                "template_co3g57b",
+                this
+            )
+            .then(() => {
+                message.className = "mt-4 text-sm font-medium text-brand-green";
+                message.innerText = "Check your email!";
+                form.reset();
+            })
+            .catch((error) => {
+                message.className = "mt-4 text-sm font-medium text-brand-red";
+                message.innerText = "Something went wrong.";
+                console.error("EmailJS Error:", error);
+            })
+            .finally(() => {
+                btn.innerText = "Subscribe";
+                btn.disabled = false;
+            });
+        });
+
+        
