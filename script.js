@@ -18,8 +18,8 @@
 
             // Using your Service ID and Template ID
             emailjs.sendForm(
-                "service_p3rb2d1",
-                "template_co3g57b",
+                "service_og4vvur",
+                "template_5k0akf9",
                 this
             )
             .then(() => {
